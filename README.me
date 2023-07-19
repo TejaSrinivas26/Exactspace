@@ -1,0 +1,53 @@
+hosting link https://gleeful-toffee-a45c06.netlify.app/
+
+
+1BASH 
+
+Description
+This script helps you find the largest log file with the .log extension on your computer and then truncates it to 100 lines using the tail command. It is useful for managing large log files and ensuring that they do not become too overwhelming to handle.
+
+How it Works
+The script uses a for loop to find all files with the .log extension in the specified directory (/path/to/logs) and its subdirectories. It then calculates the number of lines in each log file using the wc -l command and compares them to find the largest file.
+
+If a log file is found, it truncates it to 100 lines using the tail -n 100 command and saves the truncated content to a temporary file. Finally, it replaces the original file with the truncated content.
+
+
+2PYHTON
+The application should now be running locally. You can access it in your web browser at http://localhost:5000/.
+Usage
+Access the application by visiting http://localhost:5000/ in your web browser.
+You will see a form with a textarea where you can input your JSON data.
+Enter your JSON data into the textarea.
+Click the "Submit" button.
+The application will process your JSON data and return a JSON response displaying the parsed data.
+
+3HTML
+JSON Form Web Application
+
+JSON Form is a simple web application that allows users to input JSON data and view it in a user-friendly form format. The application parses the JSON data and generates an interactive form with input fields for each key-value pair. This can be useful for users who want to visualize and interact with JSON data in a more structured way.
+
+How to Use
+
+1. Access the application by visiting the JSON Form Web Application in your web browser.
+2. Enter your JSON data into the provided textarea.
+3. Click the "Display JSON" button to view the generated form.
+4. The application will parse the JSON data and present it in a structured form format.
+
+Features
+
+- JSON data input with syntax validation.
+- Generation of an interactive form from the JSON data.
+- Nested objects and arrays are supported, creating nested form sections for a clearer view.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Assignment Test -
+1. Level - 1 (BASH): Find the largest log file in computer (x.log) and truncate it to 100 lines.
+2. Level -2 (python): Make a webpage with a form (text area) to collects a json . After submit,
+we should be able to see the submitted json as an API response.
+
+3. Level - 3 (HTML advance): Rather than displaying json above; display a webpage which has
+above json shown in kind of a form.
+e.g. If the submitted json in the text-area is {"hello":"world"} .

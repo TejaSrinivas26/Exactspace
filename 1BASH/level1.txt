@@ -1,0 +1,28 @@
+To find the largest log file on your computer with the extension .log and truncate it to 100 lines using a Bash script, you can use the following commands:
+
+#!/bin/bash
+
+# Search for log files and find the largest one
+largest_file=""
+largest_size=0
+for file in $(find /path/to/logs -type f -name "*.log"); do
+    size=$(wc -l < "$file")
+    if ((size > largest_size)); then
+        largest_size=$size
+        largest_file=$file
+    fi
+done
+
+if [ -n "$largest_file" ]; then
+    # Truncate the largest log file to 100 lines
+    tail -n 100 "$largest_file" > "$largest_file.tmp"
+    mv "$largest_file.tmp" "$largest_file"
+    echo "Truncated $largest_file to 100 lines."
+else
+    echo "No log files found."
+fi
+
+
+Save the above script to a file (truncate_logs.sh), and then you can run it in the terminal using the following command:
+
+bash truncate_logs.sh
