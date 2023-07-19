@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Form</title>
+    <style>
+        .json-container {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .json-label {
+            font-weight: bold;
+        }
+        .json-input {
+            padding: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="json-container">
+        <h2>JSON Form</h2>
+        <textarea id="json-input" rows="10" cols="50" placeholder="Enter JSON here"></textarea>
+        <button onclick="displayJSON()">Display JSON</button>
+        <div id="json-output"></div>
+    </div>
+
+    <script>
+        function displayJSON() {
+            var jsonInput = document.getElementById("json-input").value;
+            var jsonOutput = document.getElementById("json-output");
+
+            try {
+                var jsonData = JSON.parse(jsonInput);
+                jsonOutput.innerHTML = createForm(jsonData);
+            } catch (error) {
+                jsonOutput.innerHTML = "<p style='color: red;'>Invalid JSON</p>";
+            }
+        }
+
+        function createForm(jsonData) {
+            var html = "";
+
+            for (var key in jsonData) {
+                var value = jsonData[key];
+                html += "<label class='json-label'>" + key + "</label>";
+
+                if (typeof value === "object" && value !== null) {
+                    html += createForm(value);
+                } else {
+                    var inputWidth = (value.toString().length * 10) + "px";
+                    html += "<input type='text' class='json-input' value='" + value + "' style='width: " + inputWidth + ";' readonly>";
+                }
+            }
+
+            return html;
+        }
+    </script>
+</body>
+</html>
